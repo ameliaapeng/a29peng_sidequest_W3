@@ -1,43 +1,36 @@
 // NOTE: Do NOT add setup() or draw() in this file
 // setup() and draw() live in main.js
-// This file only defines:
-// 1) drawLose() → what the lose screen looks like
-// 2) input handlers → how the player returns to the start screen
 
-// ------------------------------
-// Main draw function for lose screen
-// ------------------------------
-// drawLose() is called from main.js
-// only when currentScreen === "lose"
 function drawLose() {
-  // Red-tinted background to communicate failure
   background(255, 210, 210);
 
   fill(0);
-  textAlign(CENTER, CENTER);
+  textAlign(CENTER, TOP);
+  textSize(42);
+  text("Something Went Wrong", width / 2, 90);
 
-  // Main message
-  textSize(40);
-  text("You Lose!", width / 2, 300);
+  textSize(18);
 
-  // Instruction text
-  textSize(20);
-  text("Click or press R to return to Start.", width / 2, 360);
+  let msg =
+    "TRAP ENDING (Low Trust)\n\n" +
+    "Your files corrupt overnight.\n" +
+    "A new folder appears: PAY_ATTENTION\n\n" +
+    "Your cursor moves by itself… just slightly.\n" +
+    "Like it’s waiting for your next click.";
+
+  text(msg, width / 2, 190);
+
+  fill(0);
+  textSize(16);
+  text("Press R to return to Start", width / 2, 540);
+
+  cursor(ARROW);
 }
 
-// ------------------------------
-// Mouse input for lose screen
-// ------------------------------
-// Any mouse click returns the player to the start screen
-// (no buttons needed for this simple end state)
 function loseMousePressed() {
-  currentScreen = "start";
+  // no click actions needed
 }
 
-// ------------------------------
-// Keyboard input for lose screen
-// ------------------------------
-// R is commonly used for “restart” in games
 function loseKeyPressed() {
   if (key === "r" || key === "R") {
     currentScreen = "start";

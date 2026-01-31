@@ -1,46 +1,46 @@
 // NOTE: Do NOT add setup() or draw() in this file
 // setup() and draw() live in main.js
-// This file only defines:
-// 1) drawWin() → what the win screen looks like
-// 2) input handlers → how the player returns to the start screen
-//
-// This file is intentionally very similar to lose.js.
-// The goal is to show that win/lose screens are often
-// simple “end states” with minimal logic.
 
-// ------------------------------------------------------------
-// Main draw function for win screen
-// ------------------------------------------------------------
-// drawWin() is called from main.js
-// only when currentScreen === "win"
 function drawWin() {
-  // Green-tinted background to communicate success
-  background(200, 255, 200);
+  background(200, 255, 210);
 
   fill(0);
-  textAlign(CENTER, CENTER);
+  textAlign(CENTER, TOP);
+  textSize(42);
+  text("You Made It", width / 2, 90);
 
-  // Main success message
-  textSize(40);
-  text("You Win!", width / 2, 300);
+  textSize(18);
 
-  // Instruction text
-  textSize(20);
-  text("Click or press R to return to Start.", width / 2, 360);
+  let msg = "";
+
+  if (endingTag === "secret") {
+    msg =
+      "SECRET ENDING (High Trust)\n\n" +
+      "A clean, organized project template builds itself.\n" +
+      "Your files are perfectly named. Everything exports correctly.\n\n" +
+      "A final note appears:\n" +
+      '"You listened. Good luck."';
+  } else {
+    msg =
+      "SAFE ENDING\n\n" +
+      "You submit your work the next day.\n" +
+      "No weird folders. No glitches.\n\n" +
+      "Still… you swear the monitor light flickers when you walk away.";
+  }
+
+  text(msg, width / 2, 190);
+
+  fill(0);
+  textSize(16);
+  text("Press R to return to Start", width / 2, 540);
+
+  cursor(ARROW);
 }
 
-// ------------------------------------------------------------
-// Mouse input for win screen
-// ------------------------------------------------------------
-// Any mouse click returns the player to the start screen
 function winMousePressed() {
-  currentScreen = "start";
+  // no click actions needed
 }
 
-// ------------------------------------------------------------
-// Keyboard input for win screen
-// ------------------------------------------------------------
-// R is commonly used for “restart” in games
 function winKeyPressed() {
   if (key === "r" || key === "R") {
     currentScreen = "start";

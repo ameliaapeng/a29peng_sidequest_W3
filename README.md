@@ -28,12 +28,11 @@ This p5.js project demonstrates a simple multi-screen game structure using a sta
 
 ## Assets
 
-N/A
+Used GENAi to assit with code, AI modofied the code after the idea that i given to it. 
 
 ---
 
 ## GenAI
 
-The code was written by Dr. Karen Cochrane but she used GenAI to write the comments.
-
+ChatGPT assisted with code building.
 ---
